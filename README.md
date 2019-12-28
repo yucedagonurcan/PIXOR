@@ -35,6 +35,15 @@ You also need to install the [velodyne driver](https://github.com/ros-drivers/ve
 
 Set up the velodyne workspace by running ./velodyne_setup.bash and press Ctrl-C as necessary.
 
+## CSE4088 Demo
+You have to download the KITTI Raw dataset from: 
+Synced_rectified_data: https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data/2011_09_26_drive_0048/2011_09_26_drive_0048_sync.zip
+Calibration: https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data/2011_09_26_calib.zip
+Final hierarchy of your files needs to be: ![alt text](imgs/Final_hierarchy.png)
+```
+python3.5 try_kitti.py
+``` 
+
 ## Demo
 A helper class is provided in run_kitti.py to simplify writing inference pipelines using pre-trained models. Here is how we would do it. Run this from the src folder (suppose I have already downloaded my KITTI raw data and extracted to somewhere)
 ```
