@@ -22,9 +22,9 @@ class Detector(object):
         self.config = config
         self.cdll = cdll
         if self.cdll:
-            self.LidarLib = ctypes.cdll.LoadLibrary('preprocess/LidarPreprocess.so')
-        #self.device = torch.device('cuda:3' if torch.cuda.is_available() else 'cpu')
-        self.device = torch.device('cpu')
+            self.LidarLib = ctypes.cdll.LoadLibrary('srcs/preprocess/LidarPreprocess.so')
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        #self.device = torch.device('cpu')
         self.net = PIXOR(config['geometry'], config['use_bn']).to(self.device)
 
         self.net.set_decode(True)
@@ -109,7 +109,7 @@ class Detector(object):
 
 def run(dataset, save_path, height=400):
     config = {
-      "ckpt_name": "experiments/decay/34epoch",
+      "ckpt_name": "srcs/experiments/default/34epoch",
       "use_bn": True,
       "cls_threshold": 0.5,
       "nms_iou_threshold": 0.1,
@@ -171,7 +171,7 @@ def run(dataset, save_path, height=400):
 
 def make_kitti_video():
      
-    basedir = '/mnt/ssd2/od/KITTI/raw'
+    basedir = '/home/aw2/Development/PIXOR'
     date = '2011_09_26'
     drive = '0035'
     dataset = pykitti.raw(basedir, date, drive)

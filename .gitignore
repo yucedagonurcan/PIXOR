@@ -7,3 +7,5 @@
 .DS_STORE
 *.pyc
 *cache*
+2011_09_26/*
+.vscode/*
